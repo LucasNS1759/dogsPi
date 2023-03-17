@@ -1,0 +1,60 @@
+.divCard {
+    display: grid;
+        position: relative;
+        background-color: rgb(238, 246, 249);
+        border-radius: 1rem;
+        border: 0.1rem solid black;
+       width: 250px;
+       margin-left: 4.5rem;
+       
+        font-size: 1rem;
+    
+    }
+    
+    img {
+    position: relative;
+        height: 250px;
+        width: 250px;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+    
+    
+    button {
+        /* position: absolute; */
+        /* margin-left: 87%;
+        margin-top: .4rem; */
+        width: fit-content;
+        background-color: red;
+        border-radius: 4px;
+        border: 2px solid black;
+        cursor: pointer;
+    }
+    
+    .divName{
+    position:absolute;
+    margin-top: 12.5rem;
+    margin-left: .8rem;
+    opacity: 95%;
+    }
+    
+    .name {
+        font-size: 1.2rem;
+        font: weight 2px;
+        color:black;
+        margin-bottom: 10rem;
+        
+    
+       
+    }
+    
+    .caracteristicas{
+    display:inline-block;
+    
+    }
+    
+    .btnfav{
+    width: 1.3rem;
+    border:none;
+    margin-left: 1rem;
+    }
