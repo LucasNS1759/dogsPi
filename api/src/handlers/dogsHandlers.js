@@ -2,6 +2,8 @@ const getAllDogs = require("../controllers/getAllDogs.js");
 const getDogByName = require("../controllers/getDogByName.js");
 const getDogsIdRaza = require("../controllers/getDogsIdRaza.js");
 const postDogs = require("../controllers/postDogs.js");
+const putControlerDog = require("../controllers/putControlerDog.js");
+const deleteControlerDog = require("../controllers/deleteControlerDog.js")
 
 const getDogsHandler = async (req, res) => {
   const { name } = req.query;
@@ -17,7 +19,7 @@ const getDogsIdRazaHandler = async (req, res) => {
   const { id } = req.params;
   const searchIn = isNaN(id) ? "bdd" : "api";
   try {
-    const result = await getDogsIdRaza(id,searchIn);
+    const result = await getDogsIdRaza(id, searchIn);
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -47,9 +49,31 @@ const postDogsHandler = async (req, res) => {
   }
 };
 
+const putDogsHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await putControlerDog(id);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const deleteDogsHandler = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await deleteControlerDog(id);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   getDogsHandler,
   getDogsIdRazaHandler,
   postDogsHandler,
   getAllDogs,
+  putDogsHandler,
+  deleteDogsHandler,
 };

@@ -7,17 +7,27 @@ import {
   GET_ALL_DOGS_ONLY_BDD,
   DETAIL_ID_RAZA,
   CLEAN_DETAIL,
+  FILTER_BY_ORIGIN,
+  FILTER_AZ_ZA_MAX_WEIGHT_MIN_WEIGHT,
+  REFRESH,
+  GET_FAVORITES,
+  CLEAN_FAV,
+  DELETE_DOG,
 } from "./types";
 
 import axios from "axios";
 
 export const getAllDogs = () => {
   return async function (dispatch) {
-    const result = await axios("http://localhost:3001/dogs/name?");
-    return dispatch({
-      type: GET_ALL_DOGS,
-      payload: result.data,
-    });
+    try {
+      const result = await axios("http://localhost:3001/dogs/name?");
+      return dispatch({
+        type: GET_ALL_DOGS,
+        payload: result.data,
+      });
+    } catch (error) {
+      return window.alert(error.message);
+    }
   };
 };
 export const getALLdogsOnlyApi = () => {
@@ -39,14 +49,18 @@ export const getDogByName = (name) => {
         `http://localhost:3001/dogs/name?name=${name}`
       );
       if (result.data.length === 0) {
-        return new Error(`the dog with the name ${name} does not exist`);
+        window.alert(`the dog with the name ${name} does not exist`);
+        return;
       }
-      return dispatch({
-        type: GET_DOGS_BY_NAME,
-        payload: result.data,
-      });
+      console.log(result.data);
+      if (result.data.length) {
+        return dispatch({
+          type: GET_DOGS_BY_NAME,
+          payload: result.data,
+        });
+      }
     } catch (error) {
-      window.alert(error.message);
+      return window.alert(error.message);
     }
   };
 };
@@ -54,16 +68,16 @@ export const getDogByName = (name) => {
 export const getDetailIdRaza = (id) => {
   return async function (dispatch) {
     try {
-      console.log(id);
       const result = await axios(`http://localhost:3001/dogs/${id}`);
-      console.log(result.data);
 
+      let response = result.data.length ? result.data[0] : result.data;
+      //retorno asi porque la api me viene en un array con 1 objeto y la bdd el objeto solo
       return dispatch({
         type: DETAIL_ID_RAZA,
-        payload: result.data[0],
+        payload: response,
       });
     } catch (error) {
-      return error;
+      return window.alert(error.message);
     }
   };
 };
@@ -92,5 +106,71 @@ export const filterByTemperament = (temperament) => {
   return {
     type: FILTER_BY_TEMPERAMENT,
     payload: temperament,
+  };
+};
+
+export const filterByOrigin = (origin) => {
+  return {
+    type: FILTER_BY_ORIGIN,
+    payload: origin,
+  };
+};
+
+export const filterSort = (order) => {
+  return {
+    type: FILTER_AZ_ZA_MAX_WEIGHT_MIN_WEIGHT,
+    payload: order,
+  };
+};
+
+export const refresh = () => {
+  return async function (dispatch) {
+    try {
+      const result = await axios("http://localhost:3001/dogs/name?");
+      return dispatch({
+        type: REFRESH,
+        payload: result.data,
+      });
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
+};
+
+export const getFavorites = (user) => {
+  return async function (dispatch) {
+    try {
+      const result = await axios.get(
+        `http://localhost:3001/Favorites?user=${user}`
+      );
+
+      return dispatch({
+        type: GET_FAVORITES,
+        payload: result.data,
+      });
+    } catch (error) {
+      window.alert(error.message);
+    }
+  };
+};
+
+export const cleanFav = () => {
+  return {
+    type: CLEAN_FAV,
+  };
+};
+
+export const deleteDog = (id) => {
+  return async function (dispatch) {
+    try {
+     const result =   await axios.delete(`http://localhost:3001/dogs/${id}`);
+       window.alert(result.data)
+      return dispatch({
+        type: DELETE_DOG,
+      });
+      // return window.alert("dog deleted successfully");
+    } catch (error) {
+      return window.alert(error.message);
+    }
   };
 };

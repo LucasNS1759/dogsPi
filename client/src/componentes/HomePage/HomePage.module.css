@@ -1,7 +1,57 @@
 .divHome {
-    background-color: #eee;
-    width: 100vw;
-    height: 100vh;
-    
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  max-width: 100vw;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(-225deg, #5176fd 40%, rgb(144, 144, 244) 30%);
+}
+
+
+.divPagination {
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+
+
+}
+
+.divPaginationButton {
+  display: flex;
+
+  padding-bottom: 2rem;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.currentPage {
+  display: flex;
+  position: relative;
+  margin-bottom: 1rem;
+  justify-content: center;
+  width: 100px;
+  background-color: rgb(197, 212, 238);
+  border-radius: 10rem;
+  font-family: cursive;
+  font-weight: 900;
+}
+
+.welcome {
+  font-family: cursive;
+  font-weight: 900;
+  display: flex;
+  position: relative;
+  margin-left: calc(90%);
+  margin-top: .5rem;
+  justify-content: center;
+  width: fit-content;
+  background-color: rgb(97, 99, 251);
+  border-radius: 10rem;
+}

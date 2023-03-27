@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa"
+
 import styles from "../SearchBar/SearchBar.module.css";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getDogByName } from "../../Redux/actions";
 
-const SearchBar = ({ setDog }) => {
-const state = useSelector((state)=>state)
-const dispatch = useDispatch()
+const SearchBar = ({ setDog}) => {
+
+
+  const dispatch = useDispatch();
   const [input, setInput] = useState("");
 
   const onSearch = (value) => {
@@ -15,7 +16,6 @@ const dispatch = useDispatch()
       .then((dogs) => {
         setDog(dogs);
       });
-      
   };
 
   const handleChange = (value) => {
@@ -23,18 +23,32 @@ const dispatch = useDispatch()
     onSearch(value);
   };
   
+ 
+  
+
+
   const dispatchHandler = () => {
-    dispatch(getDogByName(input))
-  }
+    
+    try {
+      dispatch(getDogByName(input));
+    setDog("");
+    setInput("");
+    window.localStorage.setItem("currentDogs", JSON.stringify(1));
+    } catch (error) {
+      window.alert(error.message);
+    }
+    
+  };
 
   return (
     <div className={styles.inputWrapper}>
-    <FaSearch onClick={dispatchHandler} className={styles.searchIcon}/>
+      <button onClick={dispatchHandler} className={styles.searchIcon}>🔍</button>
       <input
-      placeholder="Type to search..."
+        placeholder="Type to search..."
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
+      
     </div>
   );
 };

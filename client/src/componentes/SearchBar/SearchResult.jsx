@@ -3,10 +3,11 @@ import styles from "./SearchResult.module.css"
 import { useDispatch } from 'react-redux'
 import { getDogByName } from "../../Redux/actions";
 
-const SearchResult = ({dog}) => {
+const SearchResult = ({dog,setDog}) => {
 const disptach = useDispatch()
 const handlerDispatch = () =>{
 disptach(getDogByName(dog))
+setDog("")
 }
 
   return (

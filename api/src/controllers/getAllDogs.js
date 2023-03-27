@@ -10,7 +10,10 @@ const getAllDogs = async () => {
   const dogsApi = await axios.get("https://api.thedogapi.com/v1/breeds");
 
   const allDogsApi = cleanArray(dogsApi.data);
-  return [...allDogsBd, ...allDogsApi];
+  if (allDogsBd.length) {
+    return [...allDogsBd, ...allDogsApi];
+  }
+  return [...allDogsApi];
 };
 
 module.exports = getAllDogs;

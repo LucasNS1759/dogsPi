@@ -76,21 +76,21 @@ const Login = () => {
     if (cookies.get("user")) {
       navigate("/Home");
     }
-  }, [cookies, navigate]);
+  }, []);
 
   return (
     <div className={styles.overlay}>
       <div className={styles.divPadre}>
         <div className={styles.Contenido}>
-          <header>
-            <h1>Welcome to Mi App </h1>
+          <header className={styles.hederForm}>
+            <h1 className={styles.h1Login}>Welcome to Mi App </h1>
 
             <p>loging here using a fake username and password to go to Home</p>
           </header>
           <br />
 
           <input
-            className={styles.input}
+            className={styles.inputText}
             onChange={handlerOnchange}
             type="text"
             name="user"
@@ -100,7 +100,7 @@ const Login = () => {
           <br />
 
           <input
-            className={styles.input}
+            className={styles.inputPassword}
             type="password"
             name="password"
             value={inputLogin.password}
@@ -108,9 +108,8 @@ const Login = () => {
             placeholder="enter your password..."
           />
 
-          <button onClick={() => loging()} className={styles.login}>
-            {" "}
-            Log In{" "}
+          <button onClick={() => loging()} className={styles.btnLogin}>
+            Log In
           </button>
         </div>
 
@@ -124,7 +123,7 @@ const Login = () => {
             <br />
 
             <input
-              className={styles.input}
+              className={styles.inputText}
               onChange={handlerOnchangeSingUp}
               type="text"
               name="user"
@@ -134,7 +133,7 @@ const Login = () => {
             <br />
 
             <input
-              className={styles.input}
+              className={styles.inputPassword}
               type="password"
               name="password"
               value={inputSingUp.password}
@@ -142,7 +141,9 @@ const Login = () => {
               placeholder="create a password..."
             />
 
-            <button onClick={handlerSubmit}>Sing Up</button>
+            <button className={styles.btnSingUp} onClick={handlerSubmit}>
+              Sing Up
+            </button>
           </div>
         </form>
       </div>

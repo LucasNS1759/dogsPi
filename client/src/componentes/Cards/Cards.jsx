@@ -1,19 +1,19 @@
 import React from "react";
 import styles from "../Cards/Cards.module.css";
 import Card from "../Card/Card";
-import { useSelector } from "react-redux";
 
 
-const Cards = () => {
-const state = useSelector((state)=>state)
+
+const Cards = ({currentsDogs}) => {
+
 
   return <div className={styles.divCards}>
-  {state?.allDogs && state?.allDogs?.map((dog,index)=>{
+  {currentsDogs && currentsDogs?.map((dog,index)=>{
  
   return(
   <Card
   
-  key={dog.index}
+  key={index}
   id={dog.id}
   image={dog.image && dog.image}
   name={dog.name && dog.name}

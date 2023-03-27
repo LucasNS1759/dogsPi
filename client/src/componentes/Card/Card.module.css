@@ -1,60 +1,112 @@
-.divCard {
-    display: grid;
-        position: relative;
-        background-color: rgb(238, 246, 249);
-        border-radius: 1rem;
-        border: 0.1rem solid black;
-       width: 250px;
-       margin-left: 4.5rem;
-       
-        font-size: 1rem;
-    
-    }
-    
-    img {
+.item{
+display: flex;
+    width: 300px;
+    height:300px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
     position: relative;
-        height: 250px;
-        width: 250px;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
+    margin-top: 3.2rem;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 2.5rem;
+
+
+}
+
+.img{
+    height: 100%;
+    width: 100%;
+    background-size:contain;
+    background-position: center;
+    border-radius: 4px;
+    transition: all .7s ease;
+
+}
+
+.item:hover .img{
+    transform: scale(1.3) rotate(3deg);
+    background-color: #888;
+    background-blend-mode: multiply;
+}
+
+.title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 2px rgba(0,0,0,.5);
+    position: absolute;
+    top: 60%;
+    left: 35%;
+    z-index: 2;
+    display: inline-block;
+    padding: 15px 20px;
+  
+ } ::after {
+      background: none repeat scroll 0 0 transparent;
+      bottom: 0;
+      /* content: ''; */
+      display: block;
+      height: 2px;
+      left: 50%;
+      position: absolute;
+      background: #fff;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      width: 0;
+    
+  }
+  
+  .item:hover .title {
+    top: 20%;
+    transition: all .7s ease;
+  }
+    ::after {
+      width: 100%;
+      left: 0;
     }
+  
+  
+  .description {
+    display: none;
+  }
+  
+  .item:hover .description {
+    display: inline;
+    text-align: center;
+    position: absolute;
+    bottom: 10%;
+
+    padding: 2% 4%;
+    font-weight:900;
+    color: #050505;
+    text-shadow: 2px 2px #fff;
+    background-color: aliceblue;
+   
+    
+  }
+  
+  .divBtnFav{
+  width: 30px;
+  border: 1px solid;
+  }
+ 
+  
+    .divBtn{
+      display: flex;
+      position: absolute;
+      margin-left: 14rem;
+      margin-top: 1.8rem;
+      }
     
     
-    button {
-        /* position: absolute; */
-        /* margin-left: 87%;
-        margin-top: .4rem; */
-        width: fit-content;
-        background-color: red;
-        border-radius: 4px;
-        border: 2px solid black;
-        cursor: pointer;
+    .divConteiner{
+    display: flex;
+    
     }
-    
-    .divName{
-    position:absolute;
-    margin-top: 12.5rem;
-    margin-left: .8rem;
-    opacity: 95%;
-    }
-    
-    .name {
-        font-size: 1.2rem;
-        font: weight 2px;
-        color:black;
-        margin-bottom: 10rem;
-        
-    
-       
-    }
-    
-    .caracteristicas{
-    display:inline-block;
-    
-    }
-    
-    .btnfav{
-    width: 1.3rem;
-    border:none;
-    margin-left: 1rem;
-    }
+  
+  
+  
+
+  
+  

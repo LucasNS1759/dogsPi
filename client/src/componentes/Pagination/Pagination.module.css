@@ -1,0 +1,37 @@
+.conteiner {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 3rem;
+    width: 100%;
+    height: 100%;
+}
+
+.pages,
+.prevNext {
+    cursor: pointer;
+    height: 2.2rem;
+    width: 2.5rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #5663ed;
+    color: rgb(0, 0, 0);
+    border: 1px solid;
+    margin: 0 4px;
+    border-radius: 1rem;
+}
+
+.pages:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.prevNext:hover:not(.active) {
+    background-color: #ddd;
+}
+
+
+.prevNext {
+    padding-top: .2rem;
+}
+

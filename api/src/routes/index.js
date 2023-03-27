@@ -4,6 +4,7 @@ const { Router } = require('express');
 const dogsRoutes = require("./dogsRoutes")
 const temperamentsRoutes = require("./temperamentsRoutes")
 const userRoutes = require("./userRoutes")
+const FavoritesRoutes = require("./FavoritesRoutes")
 
 
 const router = Router();
@@ -13,6 +14,7 @@ const router = Router();
 router.use("/dogs",dogsRoutes)
 router.use("/temperaments",temperamentsRoutes)
 router.use("/user",userRoutes)
+router.use("/Favorites",FavoritesRoutes)
 
 
 

@@ -1,0 +1,51 @@
+.divFav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    text-align: center;
+    background-image: linear-gradient(-225deg, #5176fd 40%, rgb(144, 144, 244) 30%);
+}
+
+.conteinerFav {
+    padding: auto;
+    margin: auto;
+    border-radius: 30%;
+}
+
+.conteinerFav:hover {
+    box-shadow: 0px 0px 15px 15px #ae6ff5;
+    -webkit-box-shadow: 0px 0px 15px 15px #f8f8fa;
+}
+
+.imgFav {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid;
+}
+
+.imgFav:hover {
+    box-shadow: 0px 0px 15px 15px #170031;
+    -webkit-box-shadow: 0px 0px 15px 15px #140058;
+}
+
+.giftFav {
+    display: flex;
+    margin-left: 50%;
+    width: 100vh;
+    height: 100vh;
+}
+
+.nameFav {
+font-family:cursive;
+font-weight: 900;
+font-size:larger;
+cursor: pointer;
+}
+
+.btnDelete {
+    border: none;
+    display: flex;
+    margin-left: .5rem;
+}

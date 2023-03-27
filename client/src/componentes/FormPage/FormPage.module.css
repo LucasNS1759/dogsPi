@@ -1,0 +1,112 @@
+li{
+   display:inline-table;
+   justify-content:space-between;
+  border: 1px solid;
+  width:auto;
+  margin: 2px;
+}
+
+ul {
+    list-style: none;
+}
+.divConteinerForm {
+    width: 800px;
+    min-height: 100vw;
+    height: 100%;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(30, 8%, 5%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #5176fd 40%, rgb(144, 144, 244) 30%);
+    border: 1px solid
+
+}
+
+.Contenido {
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+}
+
+.divCheckBox{
+display: flex;
+flex-direction: column;
+justify-content:space-between;
+}
+
+
+.hederForm {
+    margin: 2% auto 10% auto;
+    text-align: center;
+}
+
+
+
+
+.inputText {
+    width: 240px;
+    height: 50px;
+
+    margin-top: 2%;
+    padding: 15px;
+
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #000000;
+    
+    outline: none;
+    border: 1px solid black;
+
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.2s linear;
+
+}
+
+
+.inputText,
+:focus {
+    transform: translateX(-2px);
+    border-radius: 5px;
+}
+
+
+
+
+.btnLogin ,.btnCreate{
+    display: inline-block;
+    color: #252537;
+
+    width: 190px;
+    height: 50px;
+
+    padding: 0 20px;
+    background: #60978c;
+    border-radius: 5px;
+
+    /* outline: none;
+    border: none; */
+
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+}
+
+
+/* buttons hover */
+.btnSingUp:hover,.btnCreate:hover {
+    transform: translatey(3px);
+    box-shadow: none;
+    animation: ani9 0.4s ease-in-out infinite alternate;
+}
+

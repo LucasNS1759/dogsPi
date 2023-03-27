@@ -1,0 +1,13 @@
+.box {
+display: flex;
+flex-direction: column;
+}
+  
+.select{
+background-color: rgb(77, 157, 157);
+text-align: center;
+font-weight: bold;
+font-family:Georgia, 'Times New Roman', Times, serif;
+border-radius: 4rem;
+}
+

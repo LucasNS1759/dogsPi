@@ -16,9 +16,7 @@ const cleanArray = (arrayDogs) => {
   return clean;
 };
 
-//   String.prototype.toNum = function () {
-//     return parseFloat(this.split(' ').join('').split(',').join('') || 0);
-// }
+
 
 const cleanTemperaments = (allDogs) => {
   let allTemperaments = allDogs.map((dog) =>
@@ -49,9 +47,7 @@ const findNameApi = (dogs,name)=>{
   const searchByName = dogs.filter((dog) =>
     dog.name.toLowerCase().includes(name.toLowerCase())
   );
-  // if(searchByName.length === 0){
-  // return {error:"no hay concidencias para su busqueda"}
-  // }
+ 
   return cleanArray(searchByName)
 }
 

@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import styles from "../Error404/Error404.module.css";
+import { Link } from "react-router-dom";
 
 const Error404 = () => {
   return (
-    <div><h1>404 NOT FOUND</h1></div>
-  )
-}
+    <>
+      <h1 className={styles.title}>Ups nothing here...</h1>
+      <h2 className={styles.title}>
+      Back<Link to={"/Home"}> Home</Link>?{" "}
+      </h2>
+      <div className={styles.divError}>
+        <img className={styles.dogError} src="/img/dogFine.jpg" alt="dog404" />
+      </div>
+    </>
+  );
+};
 
-export default Error404
+export default Error404;

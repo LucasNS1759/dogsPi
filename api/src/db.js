@@ -39,7 +39,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Dog } = sequelize.models;
 const { Temperament } = sequelize.models;
-const {User} = sequelize.models;
+const { User } = sequelize.models;
+const { Favorite } = sequelize.models;
 
 
 
@@ -56,7 +57,16 @@ Temperament.belongsToMany(
   { timestamps: false }
 );
 
-
+User.belongsToMany(
+  Favorite,
+  { through: "users_favorite" },
+  { timestamps: false }
+);
+Favorite.belongsToMany(
+  User,
+  { through: "users_favorite" },
+  { timestamps: false }
+);
 
 module.exports = {
   ...sequelize.models,
