@@ -14,6 +14,7 @@ const LandingPage = () => {
           Find a large number of different breeds, discover details about your
           favorite dogs. Did you find a puppy that you like? Add it to your
           Favorites! Can't find your ideal dog? No problem Create it yourself!
+          And more...
         </p>
 
         <h4 className={styles.h4}>Go Home</h4>

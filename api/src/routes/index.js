@@ -7,6 +7,7 @@ const userRoutes = require("./userRoutes")
 const FavoritesRoutes = require("./FavoritesRoutes")
 
 
+
 const router = Router();
 
 // Configurar los routers
@@ -15,6 +16,8 @@ router.use("/dogs",dogsRoutes)
 router.use("/temperaments",temperamentsRoutes)
 router.use("/user",userRoutes)
 router.use("/Favorites",FavoritesRoutes)
+
+
 
 
 

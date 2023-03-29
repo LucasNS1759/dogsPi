@@ -50,9 +50,11 @@ const postDogsHandler = async (req, res) => {
 };
 
 const putDogsHandler = async (req, res) => {
-  const { id } = req.params;
+
+  const {id, Weight,Height,Image,LifeSpan,Temperaments } = req.body;
+  console.log(id,Weight,Height,Image,Temperaments);
   try {
-    const result = await putControlerDog(id);
+    const result = await putControlerDog(id,Weight,Height,Image,LifeSpan,Temperaments);
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });

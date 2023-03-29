@@ -16,7 +16,7 @@ display: flex;
 
 .img{
     height: 100%;
-    width: 100%;
+    width: 300px;
     background-size:contain;
     background-position: center;
     border-radius: 4px;
@@ -37,8 +37,8 @@ display: flex;
     color: #fff;
     text-shadow: 0 2px 2px rgba(0,0,0,.5);
     position: absolute;
-    top: 60%;
-    left: 35%;
+    top: 100%;
+    left: 30%;
     z-index: 2;
     display: inline-block;
     padding: 15px 20px;
@@ -46,7 +46,7 @@ display: flex;
  } ::after {
       background: none repeat scroll 0 0 transparent;
       bottom: 0;
-      /* content: ''; */
+     
       display: block;
       height: 2px;
       left: 50%;
@@ -76,20 +76,16 @@ display: flex;
     text-align: center;
     position: absolute;
     bottom: 10%;
-
     padding: 2% 4%;
     font-weight:900;
     color: #050505;
     text-shadow: 2px 2px #fff;
     background-color: aliceblue;
-   
-    
-  }
+    opacity: 70%;
+   }
   
-  .divBtnFav{
-  width: 30px;
-  border: 1px solid;
-  }
+
+  
  
   
     .divBtn{

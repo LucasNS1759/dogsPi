@@ -8,33 +8,39 @@ import styles from "./Favorites.module.css";
 import axios from "axios";
 
 const Favorites = () => {
+
   const coockies = new Cookies();
   const state = useSelector((state) => state);
-  const disptach = useDispatch();
-  useEffect(() => {
-    disptach(getFavorites(coockies.get("user")));
+  
+  const disptach = useDispatch(); 
+  
+  useEffect(() => { //se menota el coponente y despacho mi action para traer mis favoritos junto a mi usuario para que
+    disptach(getFavorites(coockies.get("user"))); //me los busque en la base de datos 
 
     return () => {
-      disptach(cleanFav());
+      disptach(cleanFav()); // limpio el estado al salir del componente
     };
   }, []);
+  
 
-  const handlerDeleteFav = (name) => {
-    try {
-      axios.delete(
+  const handlerDeleteFav = (name) => {//al no poder pasarle el id porque los perros favoritos son creados con ids
+    try {// distintos de los de la api le paso el nombre para poder indentificarlos y hacer el destroy
+      // posiblemente si tengo 2 perros con el mismo nombre se borren los 2 independientemene del id
+      //no probe ese caso pero se arreglaria poniendo un unique al model favorite para q no haya 2 iguales
+      axios.delete( 
         `http://localhost:3001/Favorites?name=${name}&user=${coockies.get(
           "user"
         )}`
       );
       window.alert("dog deleted successfully");
-      disptach(getFavorites(coockies.get("user")));
+      disptach(getFavorites(coockies.get("user"))); //despacho al borrar para q se actualice la vista
     } catch (error) {
       window.alert(error.message);
     }
   };
   
   const handlerLink = (name) =>{
-  return  `https://en.wikipedia.org/wiki/${name}`
+  return  `https://en.wikipedia.org/wiki/${name}`//retorno el link aca porque en el href no me dejaba concatenar el name
   }
   
   

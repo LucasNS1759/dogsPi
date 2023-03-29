@@ -21,6 +21,7 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  
   const [dog, setDog] = useState([]);
   
 
@@ -30,12 +31,12 @@ function App() {
   // array de dependecias vacio para verificar el tema de que me despacha cuando entro y salgo del detail despues de hacer una busqueda con la search si me aparecen comportamientos raros es por esot volver a llenar el array con el dispatch
 
   useEffect(() => {
-    dispatch(getAllTemperaments());
+    dispatch(getAllTemperaments()); //necesito llenar mi estado de temperamentos para hacer los filtros
   }, [dispatch]);
 
   useEffect(() => {
-    if (cookies.get("user")) {
-      return
+    if (cookies.get("user")) { // si no tengo cookies (logOut) me manda al login y no puedo volver a las rutas
+      return // hasta q vuelva a cargar cookies y me autorice 
     } else {
       navigate("login");
     }
