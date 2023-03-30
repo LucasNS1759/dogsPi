@@ -94,10 +94,7 @@ const FormPage = () => {
         [e.target.name]: temps ,
       })
     );
-    console.log("value",e.target.value);
-  console.log("name",e.target.name);
-  console.log(dogData);
-    
+  
   };
   
   

@@ -71,6 +71,14 @@ const DetailPage = () => {
       [e.target.name]: [...temp.Temperaments].concat(e.target.value),
     });
   };
+  
+  const removeTemp = (e) =>{
+  setTemp({
+  ...temp,
+  [e.target.name]: [...temp.Temperaments].filter(
+    (t) => t !== e.target.value)
+  })
+  }
 
   const handlerSubmit = async (e) => { // funcion async necesito esperar a la respuesta para seguir la logica
     e.preventDefault(); //nose si tendria q haber hecho esto desde una action y setear el detail directamente
@@ -209,8 +217,17 @@ const DetailPage = () => {
           )}
           
           <div className={styles.tempMod}>
+          {temp.Temperaments.length?<h4>click to remove</h4>:""}
             {temp?.Temperaments.map((t, index) => (
-             <ul><li key={index}>{t}</li></ul>  
+             <button
+             className={styles.btnDeleteTemp}
+             value={t}
+             key={index}
+             name="Temperaments"
+             onClick={(e)=>removeTemp(e)}
+             >
+             {t}
+             </button>
             ))}
           </div>
         </form>

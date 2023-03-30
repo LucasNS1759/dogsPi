@@ -47,6 +47,10 @@ border-radius: 1rem;
     font-family: cursive;
 }
 
+.btnModify{
+margin-left: 1rem;
+}
+
 .btnBack,
 .btnModify,
 .btnDelete {
@@ -62,10 +66,23 @@ border-radius: 1rem;
     transition: all 0.2s linear;
     border-radius: 8px;
 }
+.btnDeleteTemp{
+
+    color: #252537;
+    background: #60978c;
+    cursor: pointer;
+    font-family: cursive;
+    font-weight: bold;
+    margin-top: 1rem;
+    width: fit-content;
+    height: 20px;
+    transition: all 0.2s linear;
+    border-radius: 8px;
+}
 
 .btnBack:hover,
 .btnDelete:hover,
-.btnModify:hover {
+.btnModify:hover,.btnDeleteTemp:hover {
     transform: translatey(3px);
     box-shadow: none;
     animation: ani9 0.4s ease-in-out infinite alternate;
@@ -74,12 +91,18 @@ border-radius: 1rem;
 .btnDelete {
    margin-left: calc(80%);
 }
+.btnModify{
+margin-right: 700px;
+}
 
 .tempMod{
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+margin-right: 2rem;
+margin-top: 1rem;
+width: 180px;
 }
 
 .conteinerInfo{
