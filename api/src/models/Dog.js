@@ -17,6 +17,9 @@ module.exports = (sequelize) => {
       image: {
         type: DataTypes.STRING,
         allowNull: false,
+        // validator:{
+        // is:/(http[s]?:\/\/.*\.(?:png|jpg|gif|svg|jpeg))/i
+        // }
       },
 
       name: {

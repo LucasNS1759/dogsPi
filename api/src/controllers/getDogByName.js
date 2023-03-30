@@ -8,7 +8,7 @@ const getAllDogs = require("./getAllDogs");
 const getDogByName = async (name) => {
   const result = await getAllDogs();
 
-  const searchByName = result.filter((dog) =>
+  let searchByName = result.filter((dog) =>
     dog.name.toLowerCase().includes(name.toLowerCase())
   );
   if (searchByName.length === 0) {

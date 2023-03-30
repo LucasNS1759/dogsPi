@@ -48,11 +48,11 @@ export const getDogByName = (name) => {
       const result = await axios(
         `http://localhost:3001/dogs/name?name=${name}`
       );
-      if (result.data.length === 0) {
-        window.alert(`the dog with the name ${name} does not exist`);
-        return;
+      
+      if(!result.data.length ){
+      return window.alert(result.data.error)
       }
-      console.log(result.data);
+
       if (result.data.length) {
         return dispatch({
           type: GET_DOGS_BY_NAME,
@@ -143,6 +143,8 @@ export const getFavorites = (user) => {
       const result = await axios.get(
         `http://localhost:3001/Favorites?user=${user}`
       );
+      
+     
 
       return dispatch({
         type: GET_FAVORITES,
@@ -163,8 +165,8 @@ export const cleanFav = () => {
 export const deleteDog = (id) => {
   return async function (dispatch) {
     try {
-     const result =   await axios.delete(`http://localhost:3001/dogs/${id}`);
-       window.alert(result.data)
+      const result = await axios.delete(`http://localhost:3001/dogs/${id}`);
+      window.alert(result.data);
       return dispatch({
         type: DELETE_DOG,
       });

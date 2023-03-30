@@ -3,7 +3,7 @@ const getDogByName = require("../controllers/getDogByName.js");
 const getDogsIdRaza = require("../controllers/getDogsIdRaza.js");
 const postDogs = require("../controllers/postDogs.js");
 const putControlerDog = require("../controllers/putControlerDog.js");
-const deleteControlerDog = require("../controllers/deleteControlerDog.js")
+const deleteControlerDog = require("../controllers/deleteControlerDog.js");
 
 const getDogsHandler = async (req, res) => {
   const { name } = req.query;
@@ -26,12 +26,13 @@ const getDogsIdRazaHandler = async (req, res) => {
   }
 };
 
-const postDogsHandler = async (req, res) => {
+const postDogsHandler =  (req, res) => {
   const { id, image, name, height, weight, temperament, lifeSpan } = req.body;
 
-  try {
+ 
     if ((id, image, name, height, weight, temperament, lifeSpan)) {
-      const result = await postDogs(
+      
+      postDogs(
         id,
         image,
         name,
@@ -39,36 +40,51 @@ const postDogsHandler = async (req, res) => {
         weight,
         temperament,
         lifeSpan
-      );
-      res.status(200).json(result);
+      )
+      .then(result =>{
+        res.status(200).json(result);
+      })
+      .catch(error =>{
+        res.status(400).json({ error: error.message });
+      })
+      
     } else {
-      res.status(400).json({ error: "todos los campos son obligatorios" });
+      res.status(400).json({ error: "todos los campos son obligatorios" }); //este error no se va a mostrar nunca porque en el front esta manejado para que se envie la informacion si  o si sino no se hace la request si falta un campo
     }
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+    
+  
+   
+  
 };
 
 const putDogsHandler = async (req, res) => {
-
-  const {id, Weight,Height,Image,LifeSpan,Temperaments } = req.body;
-  console.log(id,Weight,Height,Image,Temperaments);
+  const { id, Weight, Height, Image, LifeSpan, Temperaments } = req.body;
+  console.log(id, Weight, Height, Image, Temperaments);
   try {
-    const result = await putControlerDog(id,Weight,Height,Image,LifeSpan,Temperaments);
+    const result = await putControlerDog(
+      id,
+      Weight,
+      Height,
+      Image,
+      LifeSpan,
+      Temperaments
+    );
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-const deleteDogsHandler = async (req, res) => {
+const deleteDogsHandler = (req, res) => {
   const { id } = req.params;
-  try {
-    const result = await deleteControlerDog(id);
-    res.status(200).json(result);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+
+  deleteControlerDog(id)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(400).json(error);
+    });
 };
 
 module.exports = {

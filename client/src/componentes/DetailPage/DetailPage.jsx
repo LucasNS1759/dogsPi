@@ -101,7 +101,7 @@ const DetailPage = () => {
             navigate("/Home");
           }
         } catch (error) {
-          window.alert(error.message);
+          return window.alert(error.message);
         }
       } else { // si no pasa la validacion aviso que use el mismo formato que usaron para crear el perro
         return window.alert("use the same formate to created dog");

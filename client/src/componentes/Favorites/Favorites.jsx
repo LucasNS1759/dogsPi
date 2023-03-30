@@ -20,6 +20,7 @@ const Favorites = () => {
     return () => {
       disptach(cleanFav()); // limpio el estado al salir del componente
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
 

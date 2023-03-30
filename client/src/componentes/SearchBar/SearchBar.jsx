@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../SearchBar/SearchBar.module.css";
 import { useDispatch } from "react-redux";
 import { getDogByName } from "../../Redux/actions";
+import { Link } from "react-router-dom";
 
 const SearchBar = ({ setDog}) => {
 
@@ -14,7 +15,10 @@ const SearchBar = ({ setDog}) => {
       .then((response) => response.json())
       .then((dogs) => {
         setDog(dogs); //seteo mi estado con la busqueda actual
-      });
+      })
+      .catch(error=>{
+      return window.alert(error.message)
+      })
   };
 
   const handleChange = (value) => {
@@ -36,7 +40,9 @@ const SearchBar = ({ setDog}) => {
 
   return (
     <div className={styles.inputWrapper}>
+    <Link to={"/Home"}>
       <button onClick={dispatchHandler} className={styles.searchIcon}>🔍</button>
+      </Link>
       <input
         placeholder="Type to search..."
         value={input}
@@ -48,3 +54,6 @@ const SearchBar = ({ setDog}) => {
 };
 
 export default SearchBar;
+
+
+

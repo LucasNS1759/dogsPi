@@ -5,11 +5,15 @@ import styles from "../HomePage/HomePage.module.css";
 import Cards from "../Cards/Cards";
 import {  useSelector } from "react-redux";
 import Pagination from "../Pagination/Pagination";
+import { useNavigate } from "react-router-dom";
+
 
 const HomePage = () => {
   
   const state = useSelector((state) => state);
   const cookies = new Cookies();
+  const navigate = useNavigate()
+  
   
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,10 +38,19 @@ const HomePage = () => {
     window.localStorage.setItem("currentDogs", JSON.stringify(currentPage)); //guardo mi pagina actual
   }, [currentPage]);
 
+
+ useEffect(() => { 
+    if (!cookies.get("user")) {
+     
+      navigate("/login"); 
+    }
+  }, []); //Va a verificar cada vez q se monte el componente que tenga cookies si no tengo
+  // me va a mandar al loguin 
  
 
   return (
     <div className={styles.divHome}>
+    
       <h4 className={styles.welcome}>Welcome {cookies.get("user")}!🐶</h4>
       <div className={styles.divPagination}>
         <h2 className={styles.currentPage}>Page:{currentPage}</h2>

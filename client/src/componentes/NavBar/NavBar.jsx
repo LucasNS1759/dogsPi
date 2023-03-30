@@ -24,7 +24,7 @@ const NavBar = ({ setDog, dog, handlerLogOut }) => {
       <div className={styles.divSearch}>
         <SearchBar setDog={setDog} /> 
         {dog && dog.length > 0 && (
-          <SearchResultsList setDog={setDog} dog={dog} /> // si tengo input en dog renderizo mi listado de busqueda
+          <SearchResultsList setDog={setDog} dog={dog} /> // si tengo resultado en dog renderizo mi listado de busqueda
         )}
       </div>
 
