@@ -7,6 +7,7 @@ import {
   filterSort,
   getALLdogsOnlyApi,
   getALLdogsOnlyBdd,
+  currentPage
 } from "../../Redux/actions";
 import styles from "../Filter/Filter.module.css";
 
@@ -34,6 +35,7 @@ const Filter = () => {
   const handlerTemperamentOnchange = (e) => {
     let findTempIn = [origin, e.target.value];
     dispatch(filterByTemperament(findTempIn));
+    dispatch(currentPage(1))
   };
 
   const handlerDispatch = () => {

@@ -3,40 +3,44 @@ import Cookies from "universal-cookie";
 import { useEffect, useState } from "react";
 import styles from "../HomePage/HomePage.module.css";
 import Cards from "../Cards/Cards";
-import {  useSelector } from "react-redux";
+import {  useSelector,useDispatch } from "react-redux";
 import Pagination from "../Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
+import { currentPage } from "../../Redux/actions";
+
 
 
 const HomePage = () => {
   
   const state = useSelector((state) => state);
+  const dispatch = useDispatch()
   const cookies = new Cookies();
   const navigate = useNavigate()
   
   
 
-  const [currentPage, setCurrentPage] = useState(1);
+  
   const [dogsPerPage, setDogsPerPage] = useState(8);
 
-  const indexOfLastDog = currentPage * dogsPerPage;
+  const indexOfLastDog = state?.setCurrentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
 
   let currentsDogs = state.allDogs.slice(indexOfFirstDog, indexOfLastDog);
 
   const pagination = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  
+   dispatch(currentPage(pageNumber));
   };
 
   useEffect(() => {
     const data = window.localStorage.getItem("currentDogs");
 
-    setCurrentPage(JSON.parse(data)); // seteo la ultima pagina cuando se monte el compononte para no perder
-  }, []); // la pagina actual al pasar de componentes en componentes
+    dispatch(currentPage(JSON.parse(data))); // seteo la ultima pagina cuando se monte el compononte para no perder
+  }, [dispatch]); // la pagina actual al pasar de componentes en componentes
 
   useEffect(() => {
-    window.localStorage.setItem("currentDogs", JSON.stringify(currentPage)); //guardo mi pagina actual
-  }, [currentPage]);
+    window.localStorage.setItem("currentDogs", JSON.stringify(state.setCurrentPage)); //guardo mi pagina actual
+  }, [state.setCurrentPage]);
 
 
  useEffect(() => { 
@@ -53,12 +57,12 @@ const HomePage = () => {
     
       <h4 className={styles.welcome}>Welcome {cookies.get("user")}!🐶</h4>
       <div className={styles.divPagination}>
-        <h2 className={styles.currentPage}>Page:{currentPage}</h2>
+        <h2 className={styles.currentPage}>Page:{state.setCurrentPage}</h2>
         <Pagination
           allDogs={state.allDogs}
           pagination={pagination}
           dogsPerPage={dogsPerPage}
-          currentPage={currentPage}
+         
         />
       </div>
 
