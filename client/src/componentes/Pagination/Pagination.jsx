@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "../Pagination/Pagination.module.css";
+import { useSelector,useDispatch } from "react-redux";
+import { currentPage } from "../../Redux/actions";
 
-const Pagination = ({ dogsPerPage, pagination, allDogs, currentPage }) => {
+const Pagination = ({ dogsPerPage, pagination, allDogs,  }) => {
+
   const pagesNumber = [];
+  const state = useSelector((state)=>state)
+  const dispatch = useDispatch()
 
   for (let i = 1; i <= Math.ceil(allDogs.length / dogsPerPage); i++) {
     pagesNumber.push(i);
@@ -10,13 +15,13 @@ const Pagination = ({ dogsPerPage, pagination, allDogs, currentPage }) => {
 
 
   const handlerPrev = () => {
-    if (currentPage === 1) return;
-    pagination(currentPage - 1);
+    if (state.setCurrentPage === 1) return;
+    pagination(state.setCurrentPage - 1);
   };
 
   const handlerNext = () => {
-    if (currentPage === pagesNumber.length) return;
-    pagination(currentPage + 1);
+    if (state.setCurrentPage === pagesNumber.length) return;
+    pagination(state.setCurrentPage + 1);
   };
 
   return (
@@ -30,7 +35,7 @@ const Pagination = ({ dogsPerPage, pagination, allDogs, currentPage }) => {
             <div key={page} className={styles.pages}>
               <h2
                 className={styles.pagesNumber}
-                onClick={() => pagination(page)}
+                onClick={() => dispatch(currentPage(page))}
               >
                 {page}
               </h2>

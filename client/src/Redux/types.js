@@ -12,3 +12,4 @@ export const REFRESH = "REFRESH";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const CLEAN_FAV = "CLEAN_FAV";
 export const DELETE_DOG = "DELETE_DOG";
+export const CURRENT_DOG = "CURRENT_DOG";

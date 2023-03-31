@@ -13,6 +13,7 @@ import {
   GET_FAVORITES,
   CLEAN_FAV,
   DELETE_DOG,
+  CURRENT_DOG,
 } from "./types";
 
 import axios from "axios";
@@ -48,9 +49,9 @@ export const getDogByName = (name) => {
       const result = await axios(
         `http://localhost:3001/dogs/name?name=${name}`
       );
-      
-      if(!result.data.length ){
-      return window.alert(result.data.error)
+
+      if (!result.data.length) {
+        return window.alert(result.data.error);
       }
 
       if (result.data.length) {
@@ -143,8 +144,6 @@ export const getFavorites = (user) => {
       const result = await axios.get(
         `http://localhost:3001/Favorites?user=${user}`
       );
-      
-     
 
       return dispatch({
         type: GET_FAVORITES,
@@ -174,5 +173,12 @@ export const deleteDog = (id) => {
     } catch (error) {
       return window.alert(error.message);
     }
+  };
+};
+
+export const currentPage = (page) => {
+  return {
+    type: CURRENT_DOG,
+    payload:page
   };
 };

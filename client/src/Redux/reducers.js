@@ -12,7 +12,8 @@ import {
   REFRESH,
   GET_FAVORITES,
   CLEAN_FAV,
-  DELETE_DOG
+  DELETE_DOG,
+  CURRENT_DOG
   
 } from "./types";
 
@@ -30,7 +31,8 @@ const initialState = {
   allDogsBdd: [],
   allTemperaments: [],
   dogDetail: {},
-  favorites: []
+  favorites: [],
+ setCurrentPage: 1
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -136,6 +138,12 @@ const reducer = (state = initialState, action) => {
       ...state,
       }
       
+      case CURRENT_DOG:
+      return{
+      ...state,
+      setCurrentPage: action.payload
+      
+      }
      
 
     default: {

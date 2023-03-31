@@ -1,6 +1,7 @@
 export const filterTemeperament = (action, allDogs) => {
   let origin = action[0];
   let temperament = action[1];
+  
   let result;
 
   if (temperament === "All" && origin !== "All") {
@@ -12,7 +13,10 @@ export const filterTemeperament = (action, allDogs) => {
       if (temperament === "All") {
         return allDogs;
       }
-      result = allDogs.filter((dog) => dog?.temperament?.includes(temperament));
+      
+      let all = [...onlyDogsApi(allDogs),...cleanDogsBdd(allDogs)]
+      result = all.filter((dog) => dog?.temperament?.includes(temperament));
+      
       break;
     case "Api":
       if (temperament === "All") {
@@ -32,7 +36,9 @@ export const filterTemeperament = (action, allDogs) => {
 
     default:
       if (temperament === "All") return allDogs;
-      result = allDogs.filter((dog) => dog?.temperament?.includes(temperament));
+      
+      let dogsAll = [...onlyDogsApi(allDogs),...cleanDogsBdd(allDogs)]
+      result = dogsAll.filter((dog) => dog?.temperament?.includes(temperament));
   }
   if (!result.length) {
     window.alert(`no results found for ${action}`);

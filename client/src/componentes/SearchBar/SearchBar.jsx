@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../SearchBar/SearchBar.module.css";
 import { useDispatch } from "react-redux";
-import { getDogByName } from "../../Redux/actions";
+import { currentPage, getDogByName } from "../../Redux/actions";
 import { Link } from "react-router-dom";
 
 const SearchBar = ({ setDog}) => {
@@ -29,6 +29,7 @@ const SearchBar = ({ setDog}) => {
   const dispatchHandler = () => {
     try {
       dispatch(getDogByName(input));
+      dispatch(currentPage(1))
     setDog("");
     setInput("");
     window.localStorage.setItem("currentDogs", JSON.stringify(1));//intente arreglar el bug de la search bar de q si la pagina actual es mayor a la pagina de busqueda no se muestra en la pagina 1 pero no pude todavia
