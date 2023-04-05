@@ -19,12 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
+const {PORT} = process.env;
 const getAllTemperaments = require("./src/controllers/getAllTemperaments")
 // Syncing all the models at once.
 conn.sync({ alter: true }).then( async() => {
  await getAllTemperaments()
   console.log("estoy conectado a ", conn.getDatabaseName());
-  server.listen(3001, () => {
+  server.listen(PORT, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });
