@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const SearchBar = ({ setDog}) => {
 
-
   const dispatch = useDispatch();
+  
   const [input, setInput] = useState("");
 
   const onSearch = (value) => {

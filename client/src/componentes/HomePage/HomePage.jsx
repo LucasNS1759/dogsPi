@@ -1,7 +1,7 @@
 import React from "react";
 import Cookies from "universal-cookie";
 import { useEffect, useState } from "react";
-import styles from "../HomePage/HomePage.module.css";
+import styles from "./HomePage.module.css";
 import Cards from "../Cards/Cards";
 import {  useSelector,useDispatch } from "react-redux";
 import Pagination from "../Pagination/Pagination";
